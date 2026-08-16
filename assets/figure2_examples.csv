@@ -1,0 +1,101 @@
+example_id,question,choices,gold_answer,predicted_answer,is_correct,generation_words,n_positions
+0,What functions in removing phosphorylated amino acids from proteins?,carbonate | phosphatase | peptide | sucrose,B,B,1,32,101
+1,What disease is unpreventable in the type one form but may be prevented by diet if it is of the second type?,TB | Obesity | Cancer | diabetes,D,D,1,29,101
+2,Melting ice is drastically impacting the number of what at glacier national park?,gaisers | icebergs | trees | active glaciers,D,D,1,179,101
+3,Under what type of conditions can populations grow exponentially?,pleasant | lush | useful | ideal,D,D,1,42,101
+4,What forms when secondary alcohols oxidize?,electrons | ions | chromosomes | ketones,D,D,1,35,101
+5,Ions flow through atp synthase from the thylakoid space into the stroma in a process called known as what?,oxidation | chemiosmosis | fertilization | respiration,B,B,1,47,101
+6,Birds are thought to have evolved from a group of bipedal dinosaurs called what?,pteradactyls | therapods | sporozoans | staurikosaurus,B,B,1,27,101
+7,Which membranous organelles in a cell sequence enzyme and electron molecules for efficient cellular respiration?,protons | glucose | bacterial | mitochondria,D,D,1,41,101
+8,"Vultures, raccoons and blowflies are examples of what?",scavengers | consumer | producer | predator,A,A,1,109,101
+9,What is the most important source of electromagnetic waves on earth?,the ocean | the moon | the sun | clouds,C,C,1,167,101
+10,Silk and cotton are examples of what kind of fiber?,pure | artificial | natural | simple,C,C,1,32,101
+11,Most of the fresh water on earth is tied up in a solid form. what are they called?,lakes | sediments | oceans | glaciers,D,,0,21,101
+12,The goal of this is the understand how and why things happen?,experience | science | theory | inquiry,B,D,0,144,101
+13,"What do you call the ancient cores of continents, where the earliest continental crust is now found?",escarpments | cratons | mantles | craters,B,B,1,18,101
+14,In what type of organisms are daughter cells individuals?,macroscopic organisms | multicellular organisms | unicellular organisms | hematopoietic organisms,C,,0,98,101
+15,About what percentage of the earth's water is fresh water?,nine percent | thirty percent | two percent | three percent,D,C,0,158,101
+16,"Club mosses, horsetails, ferns, and whisk ferns are examples of what type of plants?",cycads | angiosperms | gymnosperms | seedless vascular plants,D,D,1,45,101
+17,Repolarization occurs when the membrane potential begins to move back toward its resting what?,charge | voltage | tension | resistance,B,,0,65,101
+18,"Temperature, water, soil, and air are examples of nonliving factors of an ecosystem, also termed what?",nucleic factors | abiotic factors | conditional factors | diverse factors,B,B,1,19,101
+19,On what day of the cycle does ovulation usually occur?,17th | 14th | 1st | 7th,B,B,1,36,101
+20,A hydrogen atom with one neutron is called what?,ionic | covalent | magnesium | deuterium,D,D,1,30,101
+21,Biological features from a common evolutionary origin are known as what?,heterologous | monologous | homologous | analogous,C,C,1,39,101
+22,Natural gas is the predominately made up of?,sulfur | methane | carbon | hydrogen,B,B,1,11,101
+23,Downhill skiiers gain little advantage from a running start because the initial kinetic energy is small compared with the gain in what other energy form?,gravitational kinetic energy | chemical energy | thermal energy | gravitational potential energy,D,D,1,68,101
+24,"Water is considered a what since it is a polar molecule with slightly positive and slightly negative charges, so ions and polar molecules can readily dissolve in it?",osmotic | solute | solvent | pigment,C,C,1,38,101
+25,Vertebrata are characterized by the presence of what?,Thumbs | backbone | Muscles | Bones,B,B,1,32,101
+26,Cardiac muscle is found only in which part of the heart?,the walls | the left side | the ridges | the bottom,A,A,1,23,101
+27,Which type of tree is dominant in temperate forests?,shrubs | vines | fungus | deciduous,D,D,1,77,101
+28,What do mammals have under the skin to help insulate the body?,cartilage | a layer of fat | nerve cells | bone,B,B,1,28,101
+29,What is one thing that cell membranes are permeable to?,gas | specific ions | nutrients | metals,B,A,0,73,101
+30,What is the purpose of bright colors on a flower's petals?,to attract a mate | to attract pollinators | to absorb light | to distract predators,B,B,1,51,101
+31,"Twenty-four hours before fertilization, the egg has finished meiosis and becomes a mature what?",spermatozoa | fetus | oocyte | zygote,C,D,0,173,101
+32,Lyme disease is caused by what kind of organim?,bacteria | bacterium | Virus | algae,A,B,0,26,101
+33,Where is the spinal trigeminal nucleus located?,cerebrum | medulla | spinal cord | pons,B,D,0,34,101
+34,What are the two terms that designate how well aqueous solutions conduct electricity?,secular and nonpolar | polar and nonpolar | filter and nonpolar | hot and nonpolar,B,B,1,56,101
+35,What do we call the visible part of the electromagnetic spectrum?,weight | radio | light | electricity,C,C,1,14,101
+36,Organisms that live deep in the ocean must be able to withstand what?,the sun | extreme water pressure | significant water pressure | tsunamis,B,B,1,28,101
+37,Where do extrusive igneous rocks cool at?,underground | surface | in water | in volcanoes,B,B,1,46,101
+38,Where do mushrooms get their energy?,decomposing dead organisms | accumulating dead organisms | producing dead organisms | killing organisms,A,A,1,64,101
+39,What are cells without a nucleus called?,prokaryotic cells | crustal cells | Monocyte Cells | heterogeneous cells,A,A,1,33,101
+40,The nucleus from a differentiated frog cell can direct development of what?,fetus | tadpole | ovary | embryo,B,,0,63,101
+41,Prophase is preceded by a preprophase stage in what type of cells?,egg cells | brain cells | hair and nail cells | plant cells,D,D,1,107,101
+42,What form of matter has a fixed volume but not a fixed shape?,solid | liquid | mixture | gas,B,B,1,110,101
+43,What prevents new ovarian follicles from developing and suppresses uterine contractility?,estrogen | progesterone | glucose | germination,B,B,1,103,101
+44,Where fossils of the genus eomaia found?,china | Egypt | India | Japan,A,A,1,86,101
+45,"With wavelengths from 400-700 nm, what kind of light represents only a very small portion of the spectrum?",sunlight | ultraviolet light | visible light | invisible light,C,C,1,182,101
+46,"In an aqueous solution, what is the solvent?",saltwater | oil | any liquid | water,D,D,1,38,101
+47,"Breathing involves differences in what, measured in torr, between the inside of the lungs and the air outside?",temperature | resistance | gravity | pressure,D,D,1,20,101
+48,"When explosion of gases creates pressure resulting in motion of a rocket, the force pushing the rocket is called what?",temperature | thrust | friction | stasis,B,B,1,169,101
+49,"By the year 2050, 25 percent of the population of the united states will be 60 years of age or older. the cdc estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of this?",immune system | blood vessels | cardiovascular system | respiratory system,A,C,0,159,101
+50,Some bacteria cannot be cultured because they are obligate intracellular parasites and cannot be grown outside what?,sponsor cell | host cell | brain cell | anchor cell,B,B,1,76,101
+51,What makes up the dense outer layer of bones?,ligaments | adipose tissue | plasma | compact bone,D,D,1,30,101
+52,What type of biomes have water containing little or no salt?,aquatic biomes | coastal biomes | marine biomes | freshwater biomes,D,,0,269,101
+53,Which sphincter is located at the stomach end of the esophagus and opens to allow the bolus to enter the stomach?,gastro-esophageal sphincter | pyloric sphincter | urethral sphincter | pupillary sphincter,A,A,1,26,101
+54,What are the majority of solution properties dependent upon?,gas state of solute | chemical state of solute | similar state of solute | acid state of solute,B,B,1,64,101
+55,"In the inner ear, the vibrations are changed to electrical signals by hair cells lining what?",the cochlea | ear canal | hammer | ear lobe,A,A,1,70,101
+56,What is the protein in red blood cells which transports oxygen around the body?,hydrogen | hematocrit | plasma | hemoglobin,D,D,1,16,101
+57,What is essential for population of all species to expand greatly?,foliage resources | chemical resources | liquid resources | abundant resources,D,D,1,186,101
+58,What is the purpose of a bird using flashy displays?,to dissuade predators | to protect their territory | to attract mates | to signal feeding,C,C,1,38,101
+59,"When statoliths settle to the low point in the chamber, they stimulate what in that location?",dendrites | mechanoreceptors | axons | nociceptors,B,B,1,59,101
+60,What is the term for buildup of cell debris and cholesterol inside the arteries?,fibrosis | sclerosis | phimosis | atherosclerosis,D,D,1,17,101
+61,What protects the pollen of seed plants and spores of seedless plants?,chlorophyll | cocklebur | sporopollenin | cystosol,C,C,1,38,101
+62,"All biochemical molecules have oxygen, carbon, and what other element?",hydrogen | calcium | nitrogen | helium,A,A,1,34,101
+63,"The leaves of what plant genus are the source of the compound ephedrine, which is used in medicine as a potent decongestant and is similar to amphetamines?",dietary | Stimulant | ephedra | additive,C,C,1,39,101
+64,The bohr model works only for which atom?,hydrogen | helium | carbon | boron,A,A,1,47,101
+65,A fever also causes the immune system to make more of what?,red blood cells | insulin | urea | white blood cells,D,D,1,33,101
+66,The stored chemical energy of trees and other plants is called what?,biomass energy | decomposition energy | biocomposte energy | byproduct energy,A,A,1,106,101
+67,Certain air pollutants form which liquid when dissolved in water droplets in the air?,citrus | acid | base | water,B,B,1,66,101
+68,The number of what subatomic particles determines an element’s atomic number and is used to distinguish one element from another?,quarks | neutrons | electrons | protons,D,D,1,42,101
+69,What geologic era is also known as the age of mammals?,cretaceous period | paleozoic era | mesozoic era | cenozoic era,D,D,1,30,101
+70,Which is a more reliable trait or measure to identify minerals?,color | weight | shape | streak,D,D,1,131,101
+71,"The nervous system has two main parts, called the central nervous system and the what?",obsolete nervous system | useful nervous system | peripheral nervous system | functional nervious system,C,C,1,46,101
+72,What type of rocks form when an existing rock is changed by heat or pressure?,igneous | sediments | metamorphic | Molten,C,C,1,15,101
+73,What do you call health-promoting molecules that inhibit the oxidation of other molecules?,neurotransmitters | nutrients | antioxidants | hormones,C,,0,43,101
+74,What is the membrane lining the back of the eye called?,aperture | retina | cornea | lens,B,B,1,31,101
+75,What do seeds have that spores do not?,DNA | a supply of stored food | pollenators | chlorophyll,B,B,1,54,101
+76,"In photosynthesis, what process involving carbon dioxide and oxygen occurs through small, regulated openings called stomata?",gas exchange | transpiration | osmosis | fertilization,A,A,1,25,101
+77,Angiosperm seed develops inside of what?,a kidney | the pancreas | fallopian tubes | an ovary,D,D,1,22,101
+78,What kind of diffusion do small hydrophobic molecules squeeze through lipid molecules?,difficult | slippery | simple | complex,C,C,1,56,101
+79,What is the name of the molecule which has one carbon and four hydrogen atoms?,carbohydrate | methane | sulfur | carbon monoxide,B,B,1,24,101
+80,The lancelet lacks what feature that distinguishes vertebrates?,skin | mouth | backbone | feet,C,C,1,128,101
+81,What does the inside of all cells also contain?,protein | chloroplasm | cytosol | chromosomes,C,,0,158,101
+82,The type of bond that forms between molecules is called what?,helium bond | fission bond | covalent bond | hydrogen bond,D,D,1,138,101
+83,When do gases and liquids become solids?,at low temperatures | at high temperatures | at relative temperatures | at hot temperatures,A,A,1,58,101
+84,What evolutionary process has adapted protonephridia to different tasks in different environments?,natural selection | natural change | natural variety | natural reproduction,A,A,1,47,101
+85,All of the petals together are called what?,corolla | stalk | stamen | anthers,A,A,1,26,101
+86,What is the third class of elements after metals and nonmetals?,synthetics | noble gases | halogens | metalloids,D,,0,53,101
+87,An increase in what levels results in sound waves that are louder and of greater intensity?,height levels | radiation levels | heat levels | decibel levels,D,D,1,18,101
+88,What forms when nitrogen and sulfur oxides in air dissolve in rain?,dioxide rain | acid snow | acid rain | carbon rain,C,C,1,32,101
+89,What happens to the pressure when more gas is added to a rigid container?,occurs | Higher | increases | changes,C,C,1,73,101
+90,What in roundworms is a partial body cavity filled with fluid?,abdomen | cocklebur | pseudocoelom | spicule,C,C,1,39,101
+91,Salts that are neither acidic nor basic do not affect what property of the solution when dissolved in water?,saturation | density | ph | homeostasis,C,C,1,205,101
+92,What is part of a large fungus that lives underground?,bamboo | bark | mold | mushroom,D,D,1,128,101
+93,"In the case of the moose, predation is an additional factor that regulates what?",color | population | speed | weight,B,B,1,36,101
+94,Chemical reactions involve a transfer of heat energy. measured in what?,amperes | thermals | amps | joules,D,D,1,17,101
+95,"As the telencephalon enlarges and grows into the cranial cavity, it is limited by the space within what bone structure?",skull | skeleton | spine | chest,A,A,1,36,101
+96,"If a lump of clay is dropped into water, what will occur?",Will dissolve | Will float | Will break up | it will sink,D,D,1,63,101
+97,What kind of reproduction generates most of the genetic variation that makes evolutionary adaptation possible?,asexual reproduction | cloning | sexual reproduction | synthetic reproduction,C,C,1,155,101
+98,What term is used to describe a cancer that has spread?,galvanized | metastasized | destabilized | ostracized,B,B,1,14,101
+99,What soil is common in deciduous forests?,loam | xerophyte | pedalfer | sandy soil,C,C,1,154,101

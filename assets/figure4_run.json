@@ -1,0 +1,42 @@
+{
+  "run_id": "prism-fig4-encode",
+  "source": "encode",
+  "models": [
+    "Llama-3.1-8B-Instruct",
+    "Qwen2.5-7B-Instruct",
+    "Olmo-3-7B-Instruct"
+  ],
+  "benchmarks": [
+    "logiqa",
+    "math-qa",
+    "biomix-qa",
+    "sciq"
+  ],
+  "n_layers": {
+    "Llama-3.1-8B-Instruct": 33,
+    "Qwen2.5-7B-Instruct": 29,
+    "Olmo-3-7B-Instruct": 33
+  },
+  "n_questions_per_benchmark": 100,
+  "has_random_pair_baseline": true,
+  "eq7_completions": "x+ = '<question> <correct answer>', x- = '<question> <distractor>'",
+  "eq8_adjustment": "sim_adj = cos(h+, h-) - E[cos(h_i, h_j)] over distinct pairs of completions from the same benchmark",
+  "cross_benchmark_adjustment": "cos(h+, h-) minus, per layer, the mean over the four benchmarks of their layer-mean cosine for that model; this is what the published figures plot",
+  "shaded_region": "mean +/- 1 population standard deviation (numpy std, ddof=0) of the per-question cosine similarity across questions, at each layer; not a standard error or confidence interval",
+  "figure8": "population standard deviation across the four benchmarks' layer means at each layer; invariant to the cross-benchmark adjustment",
+  "encoding": {
+    "use_template": true,
+    "system_prompt": "You are a helpful assistant.",
+    "template_offset": 6,
+    "batch_size": 1,
+    "seed": 0,
+    "baseline_pool": "all",
+    "n_random_pairs": "exact (all distinct pairs)",
+    "reuse_pairing": true,
+    "model_paths": {
+      "Llama-3.1-8B-Instruct": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659",
+      "Qwen2.5-7B-Instruct": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+      "Olmo-3-7B-Instruct": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--allenai--Olmo-3-7B-Instruct/snapshots/6e5971d9eba42665f5bd5a0fcf047f299ce1dccc"
+    }
+  }
+}

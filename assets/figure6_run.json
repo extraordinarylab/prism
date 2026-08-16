@@ -1,0 +1,42 @@
+{
+  "run_id": "prism-nota",
+  "datasets": {
+    "math-qa": "Figure 6",
+    "sciq": "Figure 7"
+  },
+  "conditions": {
+    "base": "original options, unchanged",
+    "nota_answer": "ground-truth option removed and 'None of the above' appended, which becomes the correct choice",
+    "nota_distractor": "'None of the above' appended as an additional incorrect option; the correct answer is unchanged"
+  },
+  "promptings": [
+    "standard",
+    "cot"
+  ],
+  "item_id": "benchmark row index; stable across all three conditions and both prompting styles, so drops can be estimated pairwise",
+  "num_examples_per_dataset": 500,
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": {
+      "standard": 8,
+      "cot": 512
+    },
+    "seed": 0
+  },
+  "prompt_templates": {
+    "standard": "Answer the following multiple-choice question.\n\nQuestion: {question}\nChoices:\n{choices}\n\nRespond with one letter only. The answer is",
+    "cot": "Answer the following multiple-choice question.\n\nQuestion: {question}\nChoices:\n{choices}\n\nThink step by step, then give your final answer. The last line of your response must be of the form 'ANSWER: X' where X is one of {letters}.",
+    "note": "the paper does not print the NOTA stress-test prompt; these follow its described zero-shot multiple-choice setup"
+  },
+  "answer_parsing": "CoT reads the last 'ANSWER: X' naming a valid option, else the first standalone valid option letter; Standard reads the first standalone valid option letter. Unparseable responses are scored incorrect and flagged with parsed=0",
+  "has_native_nota": "the item already offered a none-of-the-above style option before perturbation (common in MathQA); exclude these for a clean read",
+  "uncertainty": "aggregate_*.csv reports paired drops with a percentile bootstrap over items and McNemar counts, both computed on items answered under both conditions",
+  "models": {
+    "Llama3.1": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/",
+    "Qwen2.5": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28/",
+    "Olmo3": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--allenai--Olmo-3-7B-Instruct/snapshots/6e5971d9eba42665f5bd5a0fcf047f299ce1dccc/",
+    "Gemma3-4B": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--google--gemma-3-4b-it/snapshots/093f9f388b31de276ce2de164bdc2081324b9767/",
+    "Gemma3-12B": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80/",
+    "Gemma3-27B": "/mnt/iusers01/fatpou01/compsci01/y18944yw/.cache/huggingface/hub/models--google--gemma-3-27b-it/snapshots/005ad3404e59d6023443cb575daa05336842228a/"
+  }
+}
