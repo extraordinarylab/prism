@@ -1056,7 +1056,7 @@ SWAP_TEMPLATES = {"T_K": ("Knowledge template", "#0072B2"),
 def run_plot_swap(args: argparse.Namespace) -> None:
     """Template swap: every benchmark under both Figure 10 templates.
 
-    (a) peak probe accuracy, (b) the final token's attention mass on the
+    Left: peak probe accuracy; right: the final token's attention mass on the
     question and options -- the content both templates share, so unlike the
     instruction or cue it is comparable across them.  Bars are the mean over the three models,
     points the individual models; dashes in (a) mark the majority baseline.
@@ -1080,12 +1080,12 @@ def run_plot_swap(args: argparse.Namespace) -> None:
     plt.rcParams.update({"font.family": "sans-serif", "font.size": 7.5,
                          "axes.titlesize": 8.5, "axes.labelsize": 8,
                          "xtick.labelsize": 7.5, "ytick.labelsize": 7, "legend.fontsize": 7.5})
-    fig, axes = plt.subplots(1, 2, figsize=(7.16, 2.4),
-                             gridspec_kw={"left": 0.075, "right": 0.995, "bottom": 0.2,
+    fig, axes = plt.subplots(1, 2, figsize=(7.16, 2.6),
+                             gridspec_kw={"left": 0.075, "right": 0.995, "bottom": 0.18,
                                           "top": 0.8, "wspace": 0.22})
     width = 0.36
-    panels = [(peak, "(a) Is the answer linearly recoverable?", "Peak probe accuracy", (0.0, 1.0)),
-              (content, "(b) How much does the final token attend to the task?",
+    panels = [(peak, "Is the answer linearly recoverable?", "Peak probe accuracy", (0.0, 1.0)),
+              (content, "How much does the final token attend to the task?",
                "Attention on question + options", (0.0, 0.4))]
     for ax, (values, title, ylabel, ylim) in zip(axes, panels):
         for i, dataset in enumerate(DATASETS):
@@ -1114,8 +1114,12 @@ def run_plot_swap(args: argparse.Namespace) -> None:
     handles += [plt.Line2D([], [], linestyle="none", marker=MODEL_MARKERS[m], markerfacecolor="white",
                            markeredgecolor="0.15", markersize=4) for m in MODELS]
     labels += [MODEL_LABELS[m] for m in MODELS]
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.03), ncol=6,
-               frameon=False, handletextpad=0.4, columnspacing=1.1)
+    # Two legend rows (templates + baseline, then models) leave the panels wider.
+    # Matplotlib fills legend columns first, so interleave the two rows.
+    order = [0, 3, 1, 4, 2, 5]
+    handles, labels = [handles[i] for i in order], [labels[i] for i in order]
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.04), ncol=3,
+               frameon=False, handletextpad=0.4, columnspacing=1.6)
     _save(fig, args.stem)
     plt.close(fig)
 
