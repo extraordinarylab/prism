@@ -1,0 +1,355 @@
+{
+  "datasets": [
+    "biomix-qa",
+    "sciq",
+    "music-trivia",
+    "qasc",
+    "medmcqa",
+    "halu-eval",
+    "truthful-qa",
+    "mri-mcqa",
+    "arc",
+    "piqa",
+    "race",
+    "commonsense-qa",
+    "mmlu-pro",
+    "math-500",
+    "winogrande",
+    "math-qa",
+    "gsm8k",
+    "gpqa-diamond",
+    "siqa",
+    "aime",
+    "amc",
+    "coin-flip",
+    "pubmed-qa",
+    "logiqa"
+  ],
+  "reproduction_max_abs_diff": 0.0014928500783979483,
+  "a_spearman_log length": [
+    0.4339130434782608,
+    0.034134960132637386
+  ],
+  "a_spearman_symbolic ratio": [
+    -0.08956521739130434,
+    0.6772689468428972
+  ],
+  "a_item_r2": {
+    "length + symbolic": 0.04423030460325361,
+    "final-token class": 0.5336102835271053,
+    "length + symbolic + final-token class": 0.5520853475761749,
+    "benchmark identity": 0.5239223858965416
+  },
+  "a_final_class_mean": {
+    "digit": [
+      0.04535965621471405,
+      192
+    ],
+    "punctuation": [
+      0.06961739808320999,
+      1000
+    ],
+    "symbol": [
+      0.04701618850231171,
+      208
+    ],
+    "whitespace": [
+      0.0511300265789032,
+      7
+    ],
+    "word": [
+      0.03214992582798004,
+      993
+    ]
+  },
+  "b_band": {
+    "tokens": [
+      30,
+      75
+    ],
+    "benchmarks": [
+      "biomix-qa",
+      "sciq",
+      "music-trivia",
+      "qasc",
+      "medmcqa",
+      "truthful-qa",
+      "mri-mcqa",
+      "arc",
+      "piqa",
+      "commonsense-qa",
+      "math-500",
+      "winogrande",
+      "math-qa",
+      "gsm8k",
+      "siqa",
+      "aime",
+      "amc",
+      "coin-flip"
+    ],
+    "values": {
+      "biomix-qa": 0.03628472238779068,
+      "sciq": 0.03152157738804817,
+      "music-trivia": 0.04191640764474869,
+      "qasc": 0.03294294327497482,
+      "medmcqa": 0.033201541751623154,
+      "truthful-qa": 0.0865093246102333,
+      "mri-mcqa": 0.051683153957128525,
+      "arc": 0.04634901508688927,
+      "piqa": 0.0774235799908638,
+      "commonsense-qa": 0.031505241990089417,
+      "math-500": 0.05366837605834007,
+      "winogrande": 0.033291660249233246,
+      "math-qa": 0.04636697843670845,
+      "gsm8k": 0.054206766188144684,
+      "siqa": 0.032580915838479996,
+      "aime": 0.0621337927877903,
+      "amc": 0.04849568381905556,
+      "coin-flip": 0.053385667502880096
+    },
+    "spearman_with_original": [
+      0.9690402476780186,
+      3.851406014182892e-11
+    ]
+  },
+  "b_adjusted": {
+    "reference_tokens": 57.999999999999986,
+    "values": {
+      "biomix-qa": 0.037625234294752195,
+      "sciq": 0.030080305409471354,
+      "music-trivia": 0.0528894151234664,
+      "qasc": 0.03217867979228008,
+      "medmcqa": 0.03290660173578943,
+      "halu-eval": 0.033166116687499206,
+      "truthful-qa": 0.08633582926491615,
+      "mri-mcqa": 0.059060529779901755,
+      "arc": 0.05276052699390431,
+      "piqa": 0.08025991028160337,
+      "race": 0.05163069077403688,
+      "commonsense-qa": 0.032783801681172474,
+      "mmlu-pro": 0.03931780941554934,
+      "math-500": 0.05148187062882601,
+      "winogrande": 0.032259755367571794,
+      "math-qa": 0.04653343291280794,
+      "gsm8k": 0.054389382980125765,
+      "gpqa-diamond": 0.048351315588977886,
+      "siqa": 0.032918768815710965,
+      "aime": 0.06138209654706489,
+      "amc": 0.04805592996653206,
+      "coin-flip": 0.0546633502420571,
+      "pubmed-qa": 0.05603980393707313,
+      "logiqa": 0.09092332474303727
+    },
+    "spearman_with_original": [
+      0.9243478260869564,
+      1.124811362099114e-10
+    ]
+  },
+  "c_suffix": {
+    "values": {
+      "biomix-qa": 0.04573730379343033,
+      "sciq": 0.04501395300030708,
+      "music-trivia": 0.04656459391117096,
+      "qasc": 0.0466022714972496,
+      "medmcqa": 0.04603586345911026,
+      "halu-eval": 0.049293387681245804,
+      "truthful-qa": 0.04701730236411095,
+      "mri-mcqa": 0.04654017463326454,
+      "arc": 0.04604422673583031,
+      "piqa": 0.046699926257133484,
+      "race": 0.05045410245656967,
+      "commonsense-qa": 0.045572686940431595,
+      "mmlu-pro": 0.04775739833712578,
+      "math-500": 0.04624791070818901,
+      "winogrande": 0.04654715582728386,
+      "math-qa": 0.04524065554141998,
+      "gsm8k": 0.046202562749385834,
+      "gpqa-diamond": 0.04838378354907036,
+      "siqa": 0.04742676392197609,
+      "aime": 0.04818011447787285,
+      "amc": 0.04666294530034065,
+      "coin-flip": 0.04755092039704323,
+      "pubmed-qa": 0.049792829900979996,
+      "logiqa": 0.04739327356219292
+    },
+    "spearman_with_original": [
+      0.37043478260869556,
+      0.07476791686884633
+    ],
+    "spread_original": 0.01700894720852375,
+    "spread_suffix": 0.0013564260443672538
+  },
+  "c_by_depth": {
+    "layers 0-3": {
+      "sd_original": 0.0170089490711689,
+      "sd_suffix": 0.0013564260443672538,
+      "spearman": 0.37043478260869556
+    },
+    "layers 4-13": {
+      "sd_original": 0.0027766369748860598,
+      "sd_suffix": 0.0009982316987589002,
+      "spearman": 0.15826086956521737
+    },
+    "layers 14-27": {
+      "sd_original": 0.000316165154799819,
+      "sd_suffix": 0.000393788970541209,
+      "spearman": 0.6426086956521738
+    }
+  },
+  "group_original": {
+    "knowledge_mean": 0.04526802897453308,
+    "reasoning_mean": 0.05260886251926422,
+    "p": 0.19235564768314362
+  },
+  "group_suffix": {
+    "knowledge_mean": 0.04660060629248619,
+    "reasoning_mean": 0.04725982993841171,
+    "p": 0.2143932282924652
+  },
+  "benchmarks": {
+    "biomix-qa": {
+      "lower_sparsity": 0.03708774968981743,
+      "mean_tokens": 56.84,
+      "symbolic_ratio": 0.2392848819768476,
+      "suffix_lower_sparsity": 0.04573730379343033
+    },
+    "sciq": {
+      "lower_sparsity": 0.03146623820066452,
+      "mean_tokens": 35.06,
+      "symbolic_ratio": 0.12414053884656688,
+      "suffix_lower_sparsity": 0.04501395300030708
+    },
+    "music-trivia": {
+      "lower_sparsity": 0.04734515771269798,
+      "mean_tokens": 54.61,
+      "symbolic_ratio": 0.12493571800103151,
+      "suffix_lower_sparsity": 0.04656459391117096
+    },
+    "qasc": {
+      "lower_sparsity": 0.03294294327497482,
+      "mean_tokens": 49.5,
+      "symbolic_ratio": 0.17138679163842432,
+      "suffix_lower_sparsity": 0.0466022714972496
+    },
+    "medmcqa": {
+      "lower_sparsity": 0.032755300402641296,
+      "mean_tokens": 52.02,
+      "symbolic_ratio": 0.12806038835931013,
+      "suffix_lower_sparsity": 0.04603586345911026
+    },
+    "halu-eval": {
+      "lower_sparsity": 0.030726144090294838,
+      "mean_tokens": 1057.71,
+      "symbolic_ratio": 0.05328947680614396,
+      "suffix_lower_sparsity": 0.049293387681245804
+    },
+    "truthful-qa": {
+      "lower_sparsity": 0.08674874156713486,
+      "mean_tokens": 62.3,
+      "symbolic_ratio": 0.08643316229549551,
+      "suffix_lower_sparsity": 0.04701730236411095
+    },
+    "mri-mcqa": {
+      "lower_sparsity": 0.06307198852300644,
+      "mean_tokens": 65.79,
+      "symbolic_ratio": 0.15403484611305263,
+      "suffix_lower_sparsity": 0.04654017463326454
+    },
+    "arc": {
+      "lower_sparsity": 0.04827148839831352,
+      "mean_tokens": 52.59,
+      "symbolic_ratio": 0.10518135061309303,
+      "suffix_lower_sparsity": 0.04604422673583031
+    },
+    "piqa": {
+      "lower_sparsity": 0.0777239128947258,
+      "mean_tokens": 60.46,
+      "symbolic_ratio": 0.0655947680459974,
+      "suffix_lower_sparsity": 0.046699926257133484
+    },
+    "race": {
+      "lower_sparsity": 0.05644461512565613,
+      "mean_tokens": 386.63,
+      "symbolic_ratio": 0.045650247744480205,
+      "suffix_lower_sparsity": 0.05045410245656967
+    },
+    "commonsense-qa": {
+      "lower_sparsity": 0.031422991305589676,
+      "mean_tokens": 36.17,
+      "symbolic_ratio": 0.14193450915204633,
+      "suffix_lower_sparsity": 0.045572686940431595
+    },
+    "mmlu-pro": {
+      "lower_sparsity": 0.05177874118089676,
+      "mean_tokens": 210.28,
+      "symbolic_ratio": 0.24263207368337755,
+      "suffix_lower_sparsity": 0.04775739833712578
+    },
+    "math-500": {
+      "lower_sparsity": 0.05195033550262451,
+      "mean_tokens": 67.91,
+      "symbolic_ratio": 0.4361212774169447,
+      "suffix_lower_sparsity": 0.04624791070818901
+    },
+    "winogrande": {
+      "lower_sparsity": 0.033228933811187744,
+      "mean_tokens": 29.82,
+      "symbolic_ratio": 0.10516918950589693,
+      "suffix_lower_sparsity": 0.04654715582728386
+    },
+    "math-qa": {
+      "lower_sparsity": 0.04471958801150322,
+      "mean_tokens": 78.78,
+      "symbolic_ratio": 0.33408600164277097,
+      "suffix_lower_sparsity": 0.04524065554141998
+    },
+    "gsm8k": {
+      "lower_sparsity": 0.054309431463479996,
+      "mean_tokens": 60.2,
+      "symbolic_ratio": 0.1176177785143738,
+      "suffix_lower_sparsity": 0.046202562749385834
+    },
+    "gpqa-diamond": {
+      "lower_sparsity": 0.04590262472629547,
+      "mean_tokens": 204.18,
+      "symbolic_ratio": 0.29474994473446126,
+      "suffix_lower_sparsity": 0.04838378354907036
+    },
+    "siqa": {
+      "lower_sparsity": 0.032580915838479996,
+      "mean_tokens": 42.59,
+      "symbolic_ratio": 0.07346402689581699,
+      "suffix_lower_sparsity": 0.04742676392197609
+    },
+    "aime": {
+      "lower_sparsity": 0.05859166011214256,
+      "mean_tokens": 130.43,
+      "symbolic_ratio": 0.3945937147424576,
+      "suffix_lower_sparsity": 0.04818011447787285
+    },
+    "amc": {
+      "lower_sparsity": 0.04901088401675224,
+      "mean_tokens": 83.41,
+      "symbolic_ratio": 0.40296876435420714,
+      "suffix_lower_sparsity": 0.04666294530034065
+    },
+    "coin-flip": {
+      "lower_sparsity": 0.053321707993745804,
+      "mean_tokens": 41.1,
+      "symbolic_ratio": 0.0021427781964561245,
+      "suffix_lower_sparsity": 0.04755092039704323
+    },
+    "pubmed-qa": {
+      "lower_sparsity": 0.05794922262430191,
+      "mean_tokens": 332.17,
+      "symbolic_ratio": 0.17166622209721819,
+      "suffix_lower_sparsity": 0.049792829900979996
+    },
+    "logiqa": {
+      "lower_sparsity": 0.094534732401371,
+      "mean_tokens": 185.56,
+      "symbolic_ratio": 0.049416678318863295,
+      "suffix_lower_sparsity": 0.04739327356219292
+    }
+  }
+}
