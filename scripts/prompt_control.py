@@ -45,7 +45,7 @@ Stages
 Usage
 -----
     python scripts/prompt_control.py extract --model qwen --dataset sciq \
-        --template T_K --out-dir /lus/lfs1aip2/scratch/u6sn/yangw.u6sn/prism/prompt_control
+        --template T_K --out-dir runs/prompt_control
     python scripts/prompt_control.py probe --out-dir ...
 
 Subset rule.  Full test split, capped at 1000 items by `shuffle(seed=42)`.
@@ -84,9 +84,9 @@ SYSTEM_PROMPT = "You are a helpful assistant."
 TEMPLATE_OFFSET = 6
 
 MODELS: Dict[str, str] = {
-    "qwen": "models--Qwen--Qwen2.5-7B-Instruct",
-    "llama": "models--meta-llama--Llama-3.1-8B-Instruct",
-    "olmo": "models--allenai--Olmo-3-7B-Instruct",
+    "qwen": "Qwen/Qwen2.5-7B-Instruct",
+    "llama": "meta-llama/Llama-3.1-8B-Instruct",
+    "olmo": "allenai/Olmo-3-7B-Instruct",
 }
 
 MODEL_LABELS: Dict[str, str] = {
@@ -135,18 +135,16 @@ N_FOLDS = 5
 DELTA = 1e-10
 
 
-def hub_snapshot(repo_dir: str) -> str:
-    """Resolve a local Hugging Face hub snapshot directory.
+def hub_snapshot(repo_id: str) -> str:
+    """Resolve (or download) a Hugging Face snapshot and return its local path.
 
     Loading by repo id under `HF_HUB_OFFLINE=1` trips a network call in
-    transformers 4.57 (`_patch_mistral_regex`), so we hand it a path instead.
+    transformers 4.57 (`_patch_mistral_regex`), so the model is handed a path.
+    With `HF_HUB_OFFLINE=1` only the local cache is consulted.
     """
-    from huggingface_hub import constants
-    base = constants.HF_HUB_CACHE
-    hits = sorted(glob(os.path.join(base, repo_dir, "snapshots", "*")))
-    if not hits:
-        raise FileNotFoundError(f"no local snapshot for {repo_dir} under {base}")
-    return hits[-1]
+    from huggingface_hub import snapshot_download
+
+    return snapshot_download(repo_id)
 
 
 # ---------------------------------------------------------------------------
@@ -1049,6 +1047,34 @@ def run_plot_summary(args: argparse.Namespace) -> None:
     print(cells.groupby(["template", "task"])[["gain", "scaffold", "entropy"]].mean().round(3))
 
 
+ASSET_PROBE = "assets/prompt_control_probe_accuracy.csv"
+ASSET_ATTENTION = "assets/prompt_control_attention_profile.csv"
+ASSET_BASELINES = "assets/prompt_control_baselines.json"
+
+
+def _swap_inputs(out_dir: str):
+    """Probe table, attention table and majority baselines for `plot-swap`.
+
+    Read from a local run in `out_dir` when present, otherwise from the copies
+    shipped in `assets/`, so the figure redraws without re-running the models.
+    """
+    import pandas as pd
+
+    probe_path = os.path.join(out_dir, "probe_accuracy.csv")
+    if os.path.exists(probe_path):
+        probe = pd.read_csv(probe_path)
+        attn = pd.read_csv(os.path.join(out_dir, "attention_profile.csv"))
+        baseline = {}
+        for dataset in DATASETS:
+            with open(glob(os.path.join(out_dir, f"*__{dataset}__*.json"))[0]) as fh:
+                baseline[dataset] = json.load(fh)["majority_baseline"]
+        return probe, attn, baseline
+    print(f"[plot] no run under {out_dir}; using the tables in assets/")
+    with open(ASSET_BASELINES) as fh:
+        baseline = json.load(fh)
+    return pd.read_csv(ASSET_PROBE), pd.read_csv(ASSET_ATTENTION), baseline
+
+
 SWAP_TEMPLATES = {"T_K": ("Knowledge template", "#0072B2"),
                   "T_R": ("Reasoning template", "#D55E00")}
 
@@ -1066,13 +1092,7 @@ def run_plot_swap(args: argparse.Namespace) -> None:
     import matplotlib.pyplot as plt
     import pandas as pd
 
-    probe = pd.read_csv(os.path.join(args.out_dir, "probe_accuracy.csv"))
-    attn = pd.read_csv(os.path.join(args.out_dir, "attention_profile.csv"))
-    baseline = {}
-    for dataset in DATASETS:
-        with open(glob(os.path.join(args.out_dir, f"*__{dataset}__*.json"))[0]) as fh:
-            baseline[dataset] = json.load(fh)["majority_baseline"]
-
+    probe, attn, baseline = _swap_inputs(args.out_dir)
     peak = probe.groupby(["model_key", "dataset_key", "template"]).accuracy.max()
     content = (attn.assign(s=attn.mass_question + attn.mass_choices)
                .groupby(["model_key", "dataset_key", "template"]).s.mean())
@@ -1135,7 +1155,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     # subcommand, so the sbatch wrapper can append it to the command line.
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--out-dir",
-                        default="/lus/lfs1aip2/scratch/u6sn/yangw.u6sn/prism/prompt_control")
+                        default="runs/prompt_control")
 
     p = sub.add_parser("extract", help="one forward pass per item (GPU)", parents=[common])
     p.add_argument("--model", required=True, choices=sorted(MODELS))

@@ -85,7 +85,7 @@ SUBSET_SEED = 42
 N_FOLDS = 5
 PROBE_SEED = 42
 
-DEFAULT_STATES_DIR = "/lus/lfs1aip2/scratch/u6sn/yangw.u6sn/prism/figure3_states"
+DEFAULT_STATES_DIR = "runs/figure3_states"
 DEFAULT_STEM = "assets/figure3"
 
 
@@ -170,8 +170,8 @@ def run_extract(args: argparse.Namespace) -> None:
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     os.makedirs(args.states_dir, exist_ok=True)
-    # Resolve the local snapshot so compute nodes never need the network.
-    snapshot = snapshot_download(MODELS[args.model], local_files_only=True)
+    # Resolve (or download) the snapshot; with HF_HUB_OFFLINE=1 only the local cache is used.
+    snapshot = snapshot_download(MODELS[args.model])
     print(f"Loading {MODELS[args.model]} from {snapshot}")
     tokenizer = AutoTokenizer.from_pretrained(snapshot)
     model = AutoModelForCausalLM.from_pretrained(

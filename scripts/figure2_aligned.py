@@ -35,6 +35,7 @@ The pipeline has three stages:
 Usage
 -----
     python scripts/figure2_aligned.py trace --dataset math-qa --shard 0 --num-shards 8
+    python scripts/figure2_aligned.py merge      # pack shards into assets/
     python scripts/figure2_aligned.py analyse
     python scripts/figure2_aligned.py plot
 """
@@ -82,7 +83,7 @@ MAX_NEW_TOKENS = 1024
 TEMPERATURE = 0.7
 TOP_P = 0.8
 
-DEFAULT_OUT_DIR = "/lus/lfs1aip2/scratch/u6sn/yangw.u6sn/prism/figure2_aligned"
+DEFAULT_OUT_DIR = "runs/figure2_aligned"
 DEFAULT_STEM = "assets/figure2_aligned"
 
 
@@ -178,7 +179,7 @@ def run_trace(args: argparse.Namespace) -> None:
     out_path = os.path.join(args.out_dir, f"{args.dataset}__shard{args.shard:02d}of{args.num_shards:02d}.npz")
     os.makedirs(args.out_dir, exist_ok=True)
 
-    snapshot = snapshot_download(args.model, local_files_only=True)
+    snapshot = snapshot_download(args.model)
     tokenizer = AutoTokenizer.from_pretrained(snapshot, padding_side="left")
     model = AutoModelForCausalLM.from_pretrained(
         snapshot, torch_dtype=torch.bfloat16, device_map="cuda", attn_implementation="sdpa"
@@ -253,19 +254,47 @@ def run_trace(args: argparse.Namespace) -> None:
 # Stage 2: analysis
 # --------------------------------------------------------------------------- #
 
+ASSET_TRAJECTORIES = "assets/figure2_aligned_trajectories.npz"
+
+
+def merged_shards(out_dir: str) -> Dict[str, Dict[str, np.ndarray]]:
+    """All shards of every dataset, concatenated, before any filtering.
+
+    Falls back to the merged copy in `assets/` when `out_dir` holds no run, so
+    `analyse` and `plot` work without re-generating.
+    """
+    merged = {}
+    for name in DATASETS:
+        shards = sorted(glob(os.path.join(out_dir, f"{name}__shard*.npz")))
+        if shards:
+            parts = [dict(np.load(p)) for p in shards]
+            merged[name] = {k: np.concatenate([p[k] for p in parts]) for k in parts[0]}
+    if not merged and os.path.exists(ASSET_TRAJECTORIES):
+        print(f"no run under {out_dir}; using {ASSET_TRAJECTORIES}")
+        with np.load(ASSET_TRAJECTORIES) as z:
+            for key in z.files:
+                name, field = key.split("__", 1)
+                merged.setdefault(name, {})[field] = z[key]
+    return merged
+
+
+def run_merge(args: argparse.Namespace) -> None:
+    """Write every dataset's shards into one compact file under `assets/`."""
+    merged = merged_shards(args.out_dir)
+    np.savez_compressed(ASSET_TRAJECTORIES, **{
+        f"{name}__{field}": (v.astype(np.float32) if v.dtype == np.float64 else v)
+        for name, run in merged.items() for field, v in run.items()})
+    print(f"wrote {ASSET_TRAJECTORIES}")
+
+
 def load_runs(out_dir: str) -> Dict[str, Dict[str, np.ndarray]]:
-    """Concatenate the shards of every dataset, keeping analysable generations.
+    """Every dataset's generations, keeping the analysable ones.
 
     A generation is analysed when an answer letter was parsed and it stopped
     before the token limit, so "incorrect" never just means "cut off".
     """
     runs = {}
-    for name in DATASETS:
-        shards = sorted(glob(os.path.join(out_dir, f"{name}__shard*.npz")))
-        if not shards:
-            continue
-        parts = [dict(np.load(p)) for p in shards]
-        merged = {k: np.concatenate([p[k] for p in parts]) for k in parts[0]}
+    for name, merged in merged_shards(out_dir).items():
         keep = merged["parsed"] & ~merged["truncated"] & (merged["n_tokens"] >= 2)
         merged["n_total"] = np.array(len(keep))
         merged["n_dropped"] = np.array(int((~keep).sum()))
@@ -485,6 +514,9 @@ def main(argv: Optional[List[str]] = None) -> None:
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--limit", type=int, default=0, help="first N items of the shard (smoke test)")
     p.set_defaults(func=run_trace)
+
+    p = sub.add_parser("merge", parents=[common], help="pack the shards into assets/")
+    p.set_defaults(func=run_merge)
 
     p = sub.add_parser("analyse", parents=[common], help="variability tests (CPU)")
     p.set_defaults(func=run_analyse)

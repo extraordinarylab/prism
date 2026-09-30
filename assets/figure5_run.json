@@ -1,0 +1,30 @@
+{
+  "run_id": "20260826T150011Z",
+  "average": "column",
+  "taxonomy": "tables",
+  "averaging_unit": "benchmark",
+  "D_K_size": 10,
+  "D_R_size": 20,
+  "n_models": 17,
+  "promptings": [
+    "standard",
+    "cot"
+  ],
+  "normalisation_bounds": {
+    "knowledge": {
+      "min": 0.46213,
+      "max": 0.78975
+    },
+    "reasoning": {
+      "min": 0.23969,
+      "max": 0.826395
+    }
+  },
+  "equations": {
+    "9_10": "unweighted mean of the accuracies in each dimension",
+    "11_13": "min and max over models and prompting conditions jointly, separately per dimension, then min-max scaled to [0, 1]"
+  },
+  "column_vs_dataset": "the reported tables carry 10 knowledge and 20 reasoning columns over 24 distinct datasets; HaluEval is 3 columns, AIME 4 and AI2-ARC 2. --average column (default) reproduces the published figure and weights those datasets 3x/4x/2x; --average dataset collapses them first for an equal-weight per-dataset mean",
+  "taxonomy_note": "the results tables score QASC under knowledge and PubMedQA under reasoning; Appendix A.1.1 assigns them the other way round. --taxonomy tables (default) reproduces the published figure",
+  "source": "Tables 3-6 of TACL_2026_Tracing_Knowledge_and_Reasoning_in_LLM.pdf"
+}

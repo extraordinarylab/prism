@@ -62,7 +62,7 @@ KNOWLEDGE = {"biomix-qa", "medmcqa", "mri-mcqa", "sciq", "qasc",
              "music-trivia", "truthful-qa", "halu-eval"}
 
 MATH_SYMBOLS = set("+-*/=^_<>\\$%{}|()[]")
-DEFAULT_OUT_DIR = "/lus/lfs1aip2/scratch/u6sn/yangw.u6sn/prism/figure1_controls"
+DEFAULT_OUT_DIR = "runs/figure1_controls"
 DEFAULT_STEM = "assets/figure1_controls"
 
 
@@ -100,7 +100,7 @@ def run_extract(args: argparse.Namespace) -> None:
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     os.makedirs(args.out_dir, exist_ok=True)
-    snapshot = snapshot_download(MODEL, local_files_only=True)
+    snapshot = snapshot_download(MODEL)
     tokenizer = AutoTokenizer.from_pretrained(snapshot)
     # Same numerics as Figure 1: float16, eager attention.
     model = AutoModelForCausalLM.from_pretrained(
