@@ -477,7 +477,7 @@ def plot_variability(runs: Dict[str, Dict[str, np.ndarray]], stem: str) -> None:
                            whiskerprops={"linewidth": 0.6}, capprops={"linewidth": 0.6})
         ax.set_xticks(range(len(LAYER_NAMES)))
         ax.set_xticklabels([d.split()[0] for d in LAYER_NAMES])
-        ax.set_title(f"{DATASETS[name]['label']} ({DATASETS[name]['type']})", pad=4)
+        ax.set_title(DATASETS[name]["label"], pad=4)
         _style(ax)
     axes[0].set_ylabel("Within-trajectory SD\nof attention entropy")
     handles = [plt.Rectangle((0, 0), 1, 1, color=c, alpha=0.85) for c in GROUP_COLOURS.values()]

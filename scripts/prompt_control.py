@@ -1121,7 +1121,7 @@ def run_plot_swap(args: argparse.Namespace) -> None:
                 ax.hlines(baseline[dataset], i - width, i + width, colors="0.2",
                           linestyles="--", linewidth=0.8, zorder=4)
         ax.set_xticks(range(len(DATASETS)))
-        ax.set_xticklabels([f"{c['label']}\n({c['type']})" for c in DATASETS.values()])
+        ax.set_xticklabels([c["label"] for c in DATASETS.values()])
         ax.set_ylim(*ylim)
         ax.set_title(title, pad=4)
         ax.set_ylabel(ylabel)
